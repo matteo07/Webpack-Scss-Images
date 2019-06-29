@@ -1,4 +1,4 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 const isDevelopment = true;
@@ -9,6 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  watch: true,
   module: {
     rules: [
       {
@@ -25,7 +26,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.module\.s(a|c)ss$/,
+        test: /\.module\.s[ac]ss$/,
         loader: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
@@ -46,8 +47,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.s(a|c)ss$/,
-        exclude: /\.module.(s(a|c)ss)$/,
+        test: /\.s[ac]ss$/,
+        exclude: /\.module.(s[ac]ss)$/,
         loader: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
