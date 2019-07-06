@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const isDevelopment = true;
@@ -66,6 +67,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-    })
+    }),
+    new CopyPlugin([
+      { from: 'src/index.html', to: 'index.html' },
+    ]),
   ]
 };
